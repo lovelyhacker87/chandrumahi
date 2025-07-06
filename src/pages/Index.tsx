@@ -97,7 +97,7 @@ useEffect(() => {
 
       <FloatingHearts />
       
-      {/* Enhanced Music Toggle */}
+
       <button
         onClick={() => {
   if (audioRef.current) {
