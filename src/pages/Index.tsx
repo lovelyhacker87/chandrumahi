@@ -91,7 +91,7 @@ useEffect(() => {
     
     <div className="min-h-screen bg-gradient-to-br from-pink-50 via-purple-50 to-rose-50 relative overflow-hidden">
       <audio ref={audioRef} autoPlay={false} loop>
-        <source src="/music/love-song.mp3" type="audio/mp3" />
+        <source src="music/love-song.mp3" type="audio/mp3" />
           Your browser does not support the audio element.
       </audio>
 

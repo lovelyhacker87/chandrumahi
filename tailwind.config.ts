@@ -67,6 +67,7 @@ export default {
     script: ['"Great Vibes"', 'cursive'],
     dancing: ['"Dancing Script"', 'cursive'],
     pacifico: ['"Pacifico"', 'cursive'],
+    edu: ['Edu AU VIC WA NT Pre', 'cursive']
   },
       borderRadius: {
         lg: 'var(--radius)',
@@ -97,6 +98,10 @@ export default {
         spin: {
           to: { transform: 'rotate(360deg)' },
         },
+        'romantic-fall': {
+          '0%': { transform: 'translateY(0)', opacity: '1' },
+          '100%': { transform: 'translateY(-300px)', opacity: '0' }
+        },
         'accordion-down': {
           from: { height: '0' },
           to: { height: 'var(--radix-accordion-content-height)' },
@@ -117,6 +122,7 @@ export default {
         }
       },
       animation: {
+        'romantic-fall': 'romantic-fall 15s ease-in-out infinite',
         'romantic-float': 'float 6s ease-in-out infinite',
         'gentle-pulse': 'pulse 4s ease-in-out infinite',
         'love-beat': 'heartbeat 1.5s ease-in-out infinite',

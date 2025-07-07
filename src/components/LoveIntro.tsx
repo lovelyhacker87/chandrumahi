@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { Heart, Star, Sparkles } from 'lucide-react';
 
 const LoveIntro = () => {
@@ -35,62 +35,38 @@ const LoveIntro = () => {
     return () => clearInterval(interval);
   }, []);
 
+const fallingStars = useMemo(() => {
+  return [...Array(80)].map(() => ({
+    left: `${Math.random() * 100}%`,
+    size: 0.5 + Math.random() * 1.2,
+    duration: `${8 + Math.random() * 6}s`,
+    delay: `${Math.random() * 5}s`,
+  }));
+}, []);
+
+
   return (
     <div className={`fixed inset-0 bg-gradient-to-br from-rose-900 via-pink-900 to-purple-900 z-50 flex items-center justify-center transition-all duration-1000 ${fadeOut ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
-      {/* Refined starry background */}
-      <div className="absolute inset-0">
-        {[...Array(80)].map((_, i) => (
+      {/* Smooth falling stars */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {fallingStars.map((star, i) => (
           <div
             key={i}
-            className="absolute w-0.5 h-0.5 bg-white rounded-full opacity-60"
+            className="absolute rounded-full bg-white"
             style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animation: `gentle-twinkle ${2 + Math.random() * 3}s ease-in-out infinite`,
-              animationDelay: `${Math.random() * 3}s`
+              width: `${star.size}px`,
+              height: `${star.size}px`,
+              left: star.left,
+              top: `-10px`,
+              opacity: 0.6,
+              animation: `smooth-fall ${star.duration} linear infinite`,
+              animationDelay: star.delay
             }}
           />
         ))}
-      </div>
+      </div>      
 
-      {/* Elegant floating hearts */}
-      <div className="absolute inset-0">
-        {showHearts && [...Array(15)].map((_, i) => (
-          <div
-            key={i}
-            className="absolute opacity-40"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `-20px`,
-              animation: `elegant-fall ${12 + Math.random() * 6}s linear infinite`,
-              animationDelay: `${Math.random() * 8}s`
-            }}
-          >
-            <Heart
-              size={12 + Math.random() * 16}
-              className="text-pink-200"
-              fill="currentColor"
-            />
-          </div>
-        ))}
-      </div>
 
-      {/* Subtle sparkles */}
-      <div className="absolute inset-0">
-        {[...Array(12)].map((_, i) => (
-          <Sparkles
-            key={`sparkle-${i}`}
-            size={8 + Math.random() * 8}
-            className="absolute text-yellow-200 opacity-50"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animation: `soft-sparkle ${3 + Math.random() * 2}s ease-in-out infinite`,
-              animationDelay: `${Math.random() * 2}s`
-            }}
-          />
-        ))}
-      </div>
 
       {/* Main content */}
       <div className="text-center z-10 px-4 max-w-4xl">
@@ -105,8 +81,9 @@ const LoveIntro = () => {
               }`}
               style={{ 
                 transitionDelay: `${index * 0.2}s`,
-                fontFamily: 'Dancing Script, cursive',
-                textShadow: '0 0 15px rgba(255, 182, 193, 0.6)'
+                fontFamily: 'Edu NSW ACT Cursive, cursive',
+                textShadow: '0 0 15px rgba(255, 182, 193, 0.6)',
+                fontWeight: 500
               }}
             >
               {text}

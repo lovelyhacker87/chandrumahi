@@ -1,6 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Great+Vibes&family=Pacifico&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Pacifico&family=Dancing+Script&family=Sacramento&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Great+Vibes&family=Pacifico&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Edu+AU+VIC+WA+NT+Pre:wght@400..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Libertinus+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Edu+NSW+ACT+Cursive:wght@400..700&family=Libertinus+Mono&display=swap');
 
 
 @tailwind base;
@@ -181,6 +184,16 @@
     transform: translateY(-5px) rotate(-1deg);
   }
 }
+@keyframes smooth-fall {
+  0% {
+    transform: translateY(-10px);
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(110vh); /* falls past the screen */
+    opacity: 0;
+  }
+}
 
 /* Smooth fade in */
 @keyframes smooth-fade-in {
@@ -313,6 +326,7 @@
     transform: scale(1.2);
   }
 }
+
 
 @keyframes fade-in {
   0% {

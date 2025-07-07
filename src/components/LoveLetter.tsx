@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { Heart, Star } from 'lucide-react';
 
 const LoveLetter = () => {
@@ -57,26 +57,41 @@ P.S. - You are the most beautiful miracle that has ever happened to me. Every da
       return () => clearInterval(timer);
     }
   }, [isWriting]);
-
+const floatingHearts = useMemo(() => {
+  return [...Array(20)].map(() => ({
+    left: `${Math.random() * 100}%`,
+    duration: `${15 + Math.random() * 8}s`,
+    delay: `${Math.random() * 8}s`,
+  }));
+}, []);
+const backgroundHearts = useMemo(() => {
+  return [...Array(30)].map(() => ({
+    left: `${Math.random() * 100}%`,
+    top: `${Math.random() * 100}%`,
+    size: 20 + Math.random() * 20,
+    delay: `${Math.random() * 5}s`,
+    duration: `${10 + Math.random() * 5}s`,
+  }));
+}, []);
   return (
     <section className="py-20 px-4 md:px-8 bg-gradient-to-br from-rose-100 via-pink-50 to-purple-100 relative">
       {/* Enhanced floating hearts background */}
-      <div className="absolute inset-0 overflow-hidden">
-        {[...Array(30)].map((_, i) => (
-          <Heart
-            key={i}
-            size={20 + Math.random() * 20}
-            className="absolute text-pink-200 animate-romantic-float opacity-40"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 5}s`,
-              animationDuration: `${10 + Math.random() * 5}s`
-            }}
-            fill="currentColor"
-          />
-        ))}
-      </div>
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          {backgroundHearts.map((heart, i) => (
+            <Heart
+              key={i}
+              size={heart.size}
+              className="absolute text-pink-200 animate-romantic-float opacity-40"
+              style={{
+                left: heart.left,
+                top: heart.top,
+                animationDelay: heart.delay,
+                animationDuration: heart.duration,
+              }}
+              fill="currentColor"
+            />
+          ))}
+        </div>
 
       <div className="max-w-4xl mx-auto relative z-10">
         <h2 className="text-5xl font-bold text-center mb-8 bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent font-script animate-love-glow">
@@ -128,23 +143,25 @@ P.S. - You are the most beautiful miracle that has ever happened to me. Every da
                 </div>
               )}
             </div>
+            
 
             {/* Enhanced floating elements during writing */}
             {isWriting && (
               <div className="absolute inset-0 pointer-events-none">
-                {[...Array(20)].map((_, i) => (
+                {floatingHearts.map((heart, i) => (
                   <div
                     key={i}
                     className="absolute w-3 h-3 bg-pink-300 rounded-full animate-romantic-fall opacity-50"
                     style={{
-                      left: `${Math.random() * 100}%`,
-                      animationDelay: `${Math.random() * 3}s`,
-                      animationDuration: `${5 + Math.random() * 3}s`
+                      left: heart.left,
+                      animationDelay: heart.delay,
+                      animationDuration: heart.duration
                     }}
                   />
                 ))}
               </div>
             )}
+
           </div>
 
           {/* Enhanced wax seal */}
