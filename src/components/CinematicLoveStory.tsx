@@ -32,7 +32,7 @@ const CinematicLoveStory = () => {
       title: "First Words",
       date: "September 1, 2020",
       emoji: "💬",
-      description: "Our first conversation on WhatsApp, Instagram, and Telegram. Too shy for calls, but our texts carried the weight of unspoken love growing day by day.",
+      description: "Our first conversation on WhatsApp. Too shy for calls, but our texts carried the weight of unspoken love growing day by day.",
       color: "from-green-400 via-teal-400 to-blue-400",
       bgColor: "from-green-100 to-teal-100",
       icon: <MessageCircle className="text-green-500" size={32} />
@@ -70,10 +70,10 @@ const CinematicLoveStory = () => {
     },
     {
       id: 7,
-      title: "Our First Lip Kiss",
+      title: "Our First Kiss",
       date: "February 17, 2021",
       emoji: "📸",
-      description: "Schools closed again, but we captured our first memory together on the same day. One lip kiss photo, infinite emotions - a treasure I'll cherish forever.",
+      description: "Schools closed again, but we captured our first memory together on the same day. One kiss, infinite emotions - a treasure I'll cherish forever.",
       color: "from-orange-400 via-pink-400 to-purple-400",
       bgColor: "from-orange-100 to-pink-100",
       icon: <Camera className="text-orange-500" size={32} />
