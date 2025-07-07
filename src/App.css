@@ -4,6 +4,10 @@
   padding: 2rem;
   text-align: center;
 }
+* {
+  user-select: none;
+  -webkit-user-select: none;
+}
 
 .logo {
   height: 6em;

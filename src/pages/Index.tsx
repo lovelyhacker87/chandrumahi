@@ -17,7 +17,6 @@ const Index = () => {
 
   const audioRef = useRef<HTMLAudioElement>(null);
 
-
   useEffect(() => {
     const handleLoad = () => {
       setPageLoaded(true);
@@ -256,6 +255,12 @@ useEffect(() => {
 
           <div className="relative z-10">
             <div className="text-5xl sm:text-7xl mb-6 animate-love-beat">💕</div>
+            <div className="fixed inset-0 z-50 pointer-events-none">
+              <p className="absolute bottom-4 right-4 text-sm text-black opacity-30 select-none">
+                ChandruMahi 💕  
+              </p>
+            </div>
+
             <p className="text-xl sm:text-2xl mb-6 px-4 font-handwriting">
               Made with infinite love for my dearest Maheswari
             </p>
